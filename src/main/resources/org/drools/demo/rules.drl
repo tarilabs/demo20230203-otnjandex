@@ -1,0 +1,20 @@
+
+package org.drools.demo;
+
+import org.drools.demo.model.*;
+
+global java.util.Set controlSet;
+
+rule "will execute per each Measurement having ID color"
+when
+	Measurement( id == "color", $colorVal : val )
+then
+	controlSet.add($colorVal);
+end
+
+rule R2
+when
+	MyInterface( $m : val )
+then
+	insert( new Measurement("R2", $m) );
+end
